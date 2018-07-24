@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/ywen/.oh-my-zsh"
+  export ZSH="/u/ywen/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -107,20 +107,31 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias sa="source activate"
-alias gpu1="srun --gres=gpu:1 --mem=30G --pty bash -l"
-alias gpu4="srun --gres=gpu:4 --mem=120G --pty bash -l"
-alias gpu8="srun --gres=gpu:8 --mem=220G --pty bash -l"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/pkgs/cuda-9.0/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/pkgs/cudnn-8.0-v6/lib64
 
-# added by Anaconda3 installer
-export PATH="/home/ywen/anaconda3/bin:$PATH"
+# Traditional safety measure
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
+alias cluster58='ssh cluster58'
+alias cluster12='ssh cluster12'
+alias cluster11='ssh cluster11'
+alias cluster6='ssh cluster6'
+alias ywen='cd /ais/gobi6/ywen'
+alias sa='source activate'
+alias sd='source deactivate'
+alias guppy23='srun --gres=gpu:0 -w guppy23 -p gpuc --pty zsh'
+alias guppy22='srun --gres=gpu:0 -w guppy22 -p gpuc --pty zsh'
 
-export PATH=/usr/local/cuda/bin:/usr/local/cuda-9.0/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
-export XDG_RUNTIME_DIR=""
-export PYTHONPATH="$PYTHONPATH:/home/ywen//models"
-export PATH="/home/ywen/bin:$PATH"
-source /home/jin/.slurm_functions.sh
+# Installed by anaconda
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export EDITOR="vim"
+#export PATH="/u/ywen/anaconda3/bin:$PATH"
+export PATH='/ais/gobi6/ywen/anaconda/bin:/usr/bin:/local/bin:/bin:$HOME/bin:$PATH'
+
+# added by Miniconda3 installer
+export PATH="/u/ywen/miniconda3/bin:$PATH"
+export MUJOCO_PY_MJKEY_PATH=/pkgs/mjpro131/mjkey.txt
+export MUJOCO_PY_MJPRO_PATH=/pkgs/mjpro131

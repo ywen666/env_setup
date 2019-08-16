@@ -25,8 +25,8 @@ call vundle#begin()
 
     "-------------------=== Code/Project navigation ===-------------
     Plugin 'scrooloose/nerdtree'                " Project and file navigation
+    "Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
-    Plugin 'majutsushi/tagbar'                  " Class/module browser
 
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
@@ -52,7 +52,7 @@ call vundle#begin()
     "-------------------=== Python  ===-----------------------------
     Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
-    
+
 call vundle#end()                           " required
 filetype on
 filetype plugin on
@@ -64,15 +64,17 @@ filetype plugin indent on
 syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
-colorscheme solarized
-set background=dark 
-let g:solarized_termcolors=256
 "colorscheme wombat256mod                    " set color scheme
+colorscheme solarized
+set background=dark
+set pastetoggle=<F8>
+nnoremap <F4> :set tapstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab<CR>
+nnoremap <leader>b oimport pdb;pdb.set_trace()<esc>o
+
 
 set number                                  " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
-set mouse=a                                 " enable mouse scrolling
 
 set tabstop=4                               " 4 whitespaces for tabs visual presentation
 set shiftwidth=4                            " shift lines by 4 spaces
@@ -97,16 +99,11 @@ set clipboard=unnamed                       " use system clipboard
 
 set exrc                                    " enable usage of additional .vimrc files from working directory
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
+set mouse=a
 
 " Additional mappings for Esc (useful for MacBook with touch bar)
 inoremap jj <Esc>
 inoremap jk <Esc>
-
-" Copy and paste setting
-set pastetoggle=<F8>
-
-" Clear Highlights.
-nnoremap <F3> :set hlsearch!<CR>
 
 "=====================================================
 "" Tabs / Buffers settings
@@ -134,8 +131,8 @@ let g:airline_powerline_fonts=1
 "=====================================================
 "" TagBar settings
 "=====================================================
-let g:tagbar_autofocus=0
-let g:tagbar_width=42
+"let g:tagbar_autofocus=0
+"let g:tagbar_width=42
 "autocmd BufEnter *.py :call tagbar#autoopen(0)
 "autocmd BufWinLeave *.py :TagbarClose
 
@@ -162,7 +159,8 @@ let g:riv_disable_folding=1
 "=====================================================
 
 " python executables for different plugins
-let g:pymode_python='python3'
+"let g:pymode_python='python'
+let g:pymode_python = 'python3'
 let g:syntastic_python_python_exec='python'
 
 " rope
@@ -215,7 +213,6 @@ augroup vimrc_autocmds
     autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
     autocmd FileType python,rst,c,cpp set nowrap
     autocmd FileType python,rst,c,cpp set colorcolumn=80
-    autocmd FileType python,rst,c,cpp highlight ColorColumn ctermbg=5
 augroup END
 
 " code folding

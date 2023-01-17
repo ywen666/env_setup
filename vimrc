@@ -1,24 +1,10 @@
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-"                                                                              "
-"                       __   _ _ _ __ ___  _ __ ___                            "
-"                       \ \ / / | '_ ` _ \| '__/ __|                           "
-"                        \ V /| | | | | | | | | (__                            "
-"                         \_/ |_|_| |_| |_|_|  \___|                           "
-"                                                                              "
-"                                                                              "
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-
-let $vimhome=fnamemodify(resolve(expand("~/.vimrc")), ':p:h')
-let $vundle=$vimhome."/bundle/Vundle.vim"
-
-" Be iMproved
 set nocompatible
 
 "=====================================================
 "" Vundle settings
 "=====================================================
 filetype off
-set rtp+=$vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
     Plugin 'VundleVim/Vundle.vim'               " let Vundle manage Vundle, required
